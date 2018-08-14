@@ -1,0 +1,8 @@
+http://desktop-hpggp4m:7001/console/login/LoginForm.jsp
+weblogic/weblogic123
+
+C:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
+
+domain creation:
+
+weblogic/weblogic123
