@@ -85,3 +85,16 @@ public class TestExtendThread {
 }
 -----------------------
 once run, we get mixed output
+
+------------------
+Thread Scheduler:
+
+-> Job of TS: its part of jvm, schedule thread, thread order is decided by TS.
+-> first come first serve, round robin, 
+-> output depends on the jvm which is diff system to system.
+
+t.start();
+
+--output vary from run to run
+
+
