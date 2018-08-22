@@ -22,3 +22,66 @@ A thread can be blocked when waiting for a resource.
 At any time, a thread can be terminated, which halts its execution immediately. Once terminated, a thread cannot be resumed.  
 
 
+--------------
+1. Thread: How many ways we can define thread.
+=> independent/separate flow of execution.
+=> 1 thread -> can create more threads -> create 2 thread : total 3 thread
+
+=> define a thread: ways to create a new thread:
+  1. by extending Thread Class. 
+  2. by implementing Runnable Interface. 
+
+
+=> Extending Thread
+
+Class MyThread extends Thread:
+-> within run method.
+-> 
+
+-----------------
+//defining a thread
+package learn.multiThreading;
+
+public class ExtendThread extends Thread{
+
+	public ExtendThread() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public void run()
+	{
+		//job of thread
+		for (int i=0; i<100; i++)
+		{
+			System.out.println("Child Thread Test");
+		}
+	}
+	
+}
+
+-----------------------
+
+package learn.multiThreading;
+
+public class TestExtendThread {
+
+	public static void main(String[] args) {
+
+		System.out.println("Main Thread");
+		
+		//create a new child thread from class
+		ExtendThread t = new ExtendThread();
+		//starting of a thread
+		t.start();
+		
+		//below executed by main thread
+		for (int i=0; i<100; i++)
+		{
+			System.out.println("Main Thread Test");
+		}
+	}
+
+}
+-----------------------
+once run, we get mixed output
