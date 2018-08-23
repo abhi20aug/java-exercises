@@ -1,4 +1,4 @@
-package learn.multiThreading;
+package learn.multiThreading.threadClass;
 
 public class TestOverloadingExtendThread {
 

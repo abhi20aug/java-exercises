@@ -1,4 +1,4 @@
-package learn.multiThreading;
+package learn.multiThreading.implementRunnable;
 
 public class ImplementRunnableTest implements Runnable {
 
