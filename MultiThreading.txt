@@ -1,0 +1,138 @@
+However, there are two distinct types of multitasking: 
+1. processbased
+2. thread-based. 
+
+A process is, a program that is executing. Thus, process-based multitasking is the feature that allows your
+computer to run two or more programs concurrently. For example, process-based multitasking
+enables you to run the Java compiler at the same time that you are using a text editor. 
+In processbased multitasking, a program is the smallest unit of code that can be dispatched by the
+scheduler.
+
+In a thread-based multitasking environment, the thread is the smallest unit of dispatchable code. 
+This means that a single program can perform two or more tasks simultaneously. 
+For instance, a text editor can format text at the same time that it is printing, as long as these
+two actions are being performed by two separate threads. 
+
+Threads exist in several states. 
+A thread can be running. 
+It can be ready to run as soon as it gets CPU time. 
+A running thread can be suspended, which temporarily suspends its activity.
+A suspended thread can then be resumed, allowing it to pick up where it left off. 
+A thread can be blocked when waiting for a resource. 
+At any time, a thread can be terminated, which halts its execution immediately. Once terminated, a thread cannot be resumed.  
+
+
+--------------
+1. Thread: How many ways we can define thread.
+=> independent/separate flow of execution.
+=> 1 thread -> can create more threads -> create 2 thread : total 3 thread
+
+=> define a thread: ways to create a new thread:
+  1. by extending Thread Class. 
+  2. by implementing Runnable Interface. 
+
+
+=> Extending Thread
+
+Class MyThread extends Thread:
+-> within run method.
+-> 
+
+-----------------
+//defining a thread
+package learn.multiThreading;
+
+public class ExtendThread extends Thread{
+
+	public ExtendThread() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public void run()
+	{
+		//job of thread
+		for (int i=0; i<100; i++)
+		{
+			System.out.println("Child Thread Test");
+		}
+	}
+	
+}
+
+-----------------------
+
+package learn.multiThreading;
+
+public class TestExtendThread {
+
+	public static void main(String[] args) {
+
+		System.out.println("Main Thread");
+		
+		//create a new child thread from class
+		ExtendThread t = new ExtendThread();
+		//starting of a thread
+		t.start();
+		
+		//below executed by main thread
+		for (int i=0; i<100; i++)
+		{
+			System.out.println("Main Thread Test");
+		}
+	}
+
+}
+-----------------------
+once run, we get mixed output
+
+------------------
+Thread Scheduler:
+
+-> Job of TS: its part of jvm, schedule thread, thread order is decided by TS.
+-> first come first serve, round robin, 
+-> output depends on the jvm which is diff system to system.
+
+t.start();
+
+--output vary from run to run
+Case:1:
+Any order of output since two threads are independent.
+--------------------------------------------------------------------------------------------------------------------
+Case-2:
+Thread.start() -> calls run method. 
+can we run t.run()?
+what is diff in t.start and t.run?
+when we call t.start(), new thread is created that call our run method.
+if we run t.run -> no new thread is created, its just a normal method.
+
+so t.start -> create a new thread, t.run does not create a new thread, exitsing main thread will execute run.
+
+Case:3: can I run run(), instead of start()?
+-----
+what start does? (70k lines of code)
+Its a utility for programmer.
+1. register new thread with thread scheduler
+2. perform mandatory activities
+3. invoke run
+
+start method is heart of Multi Threading.
+
+Case:4 Overloading of run method is possible.
+----------------------------------------------
+
+class Mythread extends Thread
+{
+	public run()
+	{
+	sop("no args")
+	}
+
+	public run(int i)
+	{
+	sop("args"+i)
+	}
+}
+
+Thread class Start method always calls run method without args, other run method with argument will be called normal, and will not be run with new thread.
+--------------------------------------------
