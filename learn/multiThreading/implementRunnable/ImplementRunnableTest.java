@@ -2,19 +2,15 @@ package learn.multiThreading.implementRunnable;
 
 public class ImplementRunnableTest implements Runnable {
 
-	Thread t;
-	//constructor
-	ImplementRunnableTest(){
-		t = new Thread(this,"NewT");
-		System.out.println(t);
-		t.start();
-	}
-	
-	
-	@Override
+	//job of a thread
 	public void run() {
 		// TODO Auto-generated method stub
 		
+		for(int i=0; i< 10;i++)
+		{
+			System.out.println("child thread"+i);
+			
+		}
 
 	
 	}

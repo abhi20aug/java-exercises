@@ -4,29 +4,18 @@ public class TestMainThread {
 
 	public static void main(String[] args) {
 		
-		Thread t = Thread.currentThread();
-
-		System.out.println(t);
-		t.setName("MainThreadCustomName");
-		System.out.println(t.getName());
+		ImplementRunnableTest r = new ImplementRunnableTest();
+		//who has start capability?
+		//r.start?
+		Thread t1 = new Thread(r); //passed parameters as Target Runnable
+		t1.start();
+		//start method to call run method
+		//Thread class run method has empty implement so, target runnable is passed.
 		
-		//sleep
-		
-		try {
-			for (int n=1; n<=5;n++)
-			{
-				System.out.println("n: "+n);
-				t.sleep(1000);
-			}
-			
+		for (int k=0; k< 10; k++)
+		{
+		System.out.println("Main Thread"+k);	
 		}
-		catch(Exception e) {
-			e.printStackTrace();
 		}
-		finally {
-			System.out.println("Program finished");
-		}
-
-	}
 
 }
