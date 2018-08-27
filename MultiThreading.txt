@@ -118,7 +118,7 @@ Its a utility for programmer.
 
 start method is heart of Multi Threading.
 
-Case:4 Overloading of run method is possible.
+Case:4 Overloading of run method is possible?.
 ----------------------------------------------
 
 class Mythread extends Thread
@@ -135,4 +135,66 @@ class Mythread extends Thread
 }
 
 Thread class Start method always calls run method without args, other run method with argument will be called normal, and will not be run with new thread.
+Overloading is possible.
 --------------------------------------------
+
+Case:5 If there is no run method in extendedthread extends Thread?
+t.start will call run method of Thread class, which is empty implementation. so there is no thread job exists, no output for thread run.
+you must override run method in extendedThread class. 
+
+---------------------------------------------
+Case: 6 How to Override Start method?
+You can but no child thread will be created, no muti threading, since Thread class Start method is not called in this case.
+
+################################################################################################################################
+THREAD LIFE CYCLE
+################################################################################################################################
+
+Base Life Cycle:
+New/Born-> new Tread()
+Ready/Runnable -> t.start
+Running -> Thread Shceduler allocates processor
+Dead -> run() method complete.
+################################################################################################################################
+
+Define a Thread by Runnable Interface.
+
+public class ImplementRunnableTest implements Runnable {
+
+	//job of a thread
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		for(int i=0; i< 10;i++)
+		{
+			System.out.println("child thread"+i);
+			
+		}
+
+	
+	}
+
+}
+-----------
+public class TestMainThread {
+
+	public static void main(String[] args) {
+		
+		ImplementRunnableTest r = new ImplementRunnableTest();
+		//who has start capability?
+		//r.start?
+		Thread t1 = new Thread(r); //passed parameters as Target Runnable
+		t1.start();
+		//start method to call run method
+		//Thread class run method has empty implement so, target runnable is passed.
+		
+		for (int k=0; k< 10; k++)
+		{
+		System.out.println("Main Thread"+k);	
+		}
+		}
+
+}
+------------------------------------
+
+
