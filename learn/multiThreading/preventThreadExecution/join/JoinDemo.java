@@ -56,3 +56,33 @@ public class JoinDemo {
 		}
 	}
 }
+
+/*
+t1
+t1: 0
+t1: 1
+t1: 2
+t1: 3
+t1: 4
+t1: 5
+t1: 6
+t1: 7
+t1: 8
+t1: 9
+t1-complete
+Main completed case-1
+Main case-1 ends******
+Main case-2 Starts****
+t1
+t1: 0
+t1: 1
+Main completed: case-2
+t1: 2
+t1: 3
+t1: 4
+t1: 5
+t1: 6
+t1: 7
+t1: 8
+t1: 9
+t1-complete*/
